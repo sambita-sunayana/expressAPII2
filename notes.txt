@@ -1,0 +1,11 @@
+- mkdir
+- npm init
+- npm install express
+- package.json - add "type": "module"
+- create a directory for routes
+- create a routes users GET method
+- assign that route to a specific path in the server file
+- download thunder  client extention
+- npm install uuid
+- use of get and post method on thunder client extention
+- 
