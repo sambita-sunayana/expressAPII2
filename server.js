@@ -1,20 +1,21 @@
-import express from 'express';
-import bodyParser from 'body-parser'
-
-// Import the custom module databse names Users
-import userRoutes from "./routes/users.js"
+const express = require('express');
+const connectDB = require('./config/db');
+const bookRoutes = require('./routes/bookRoutes');
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-const PORT = 5000;
+// Connect to MongoDB
+connectDB();
 
-app.use(bodyParser.json());
+app.use(express.json());
 
-app.get('/', (req, res) => {
-    console.log('[GET ROUTE]');
-    res.send('HELLO FROM HOMEPAGE');
-})
+app.get("/", (req, res) => {
+    res.send("HomePage Of The App");
+});
 
-app.use("/users", userRoutes)
+app.use("/api",bookRoutes);//use book routes with prefix "api"
 
-app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+});
